@@ -1,0 +1,35 @@
+<div class="container">
+
+    <h1>{{page_title}}{{user.nick}}</h1>
+
+    <div class="clearfix"></div>
+
+    <hr>
+    
+    <div class="user-card">
+        <h2>Seudónimo</h2>
+        <p>{{user.nick}}</p>
+
+        <h2>Email</h2>
+        <p>{{user.email}}</p>
+
+        <h2>Biografía</h2>
+        <p *ngIf="!user.bio">El usuario no ha agregado una biografía.</p>
+        <p>{{user.bio}}</p>
+
+        <h2>Textos</h2>
+
+        <div *ngIf="posts.length == 0">
+            <p>Este autor no ha publicado ningún texto todavía.</p>
+        </div>
+
+        <article *ngFor="let post of posts">
+            <a [routerLink]="['/texto', post.id]">
+                <strong>{{post['title']}}</strong>
+            </a>                
+            <p>{{post['content']}}</p>
+        </article>
+        
+    </div>
+
+</div>

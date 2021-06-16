@@ -1,0 +1,39 @@
+<div class="col-12">
+
+    <h1>{{page_title}} <a [routerLink]="['/texto', post.id]">{{post.title}}</a></h1>
+
+    <div class="col-12 alert alert-success" *ngIf="status == 'success'">
+        <p>
+            El texto fue actualizado.
+        </p>
+    </div>
+
+    <div class="col-12 alert alert-danger" *ngIf="status == 'error'">
+        <p>
+            Error al actualizar texto.
+        </p>
+    </div>
+
+    <form class="col-6 mt-5" #postEditForm="ngForm" (ngSubmit)="onSubmit(postEditForm)">
+
+        <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" name="title" class="form-control" 
+            #title="ngModel" [(ngModel)]="post.title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Contenido</label>
+            <textarea name="content" class="form-control" 
+            #content="ngModel" [(ngModel)]="post.content" required>
+            </textarea>
+        </div>
+
+        <input type="submit" value="Guardar" class="btn btn-success" 
+        [disabled]="postEditForm.invalid">
+
+    </form>
+
+</div>
+
+

@@ -1,0 +1,25 @@
+<div class="container">
+
+    <h1>{{post.title}}</h1>
+    <h2>De {{user.nick}}</h2>
+
+    <div class="clearfix"></div>
+
+    <hr>
+
+    <p>
+        {{post.content}}
+    </p>
+    
+    <a [routerLink]="['/editar-texto', post.id]"
+            *ngIf="identity.sub == post.user_id" class="btn btn-warning">
+        Editar
+    </a>
+    <a [routerLink]="['/borrar-texto', post.id]" 
+            (click)="delete()" 
+            *ngIf="identity.sub == post.user_id" class="btn btn-danger">
+        Borrar
+    </a>
+
+</div>
+
